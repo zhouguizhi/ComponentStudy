@@ -1,0 +1,23 @@
+ext{
+  isRelease = true;
+  packageName = "com.zgz.component";
+  androidId=[
+            compileSdkVersion: 30,
+            buildToolsVersion: "30.0.0",
+            applicationId: packageName,
+            minSdkVersion: 19,
+            targetSdkVersion: 30,
+            versionCode: 1,
+            versionName: "1.0",
+  ]
+        appcompatVersion="1.2.0";
+        constraintLayoutVersion = "2.0.1";
+
+    dependencies=[
+         "appcompat":"androidx.appcompat:appcompat:${appcompatVersion}",
+    ]
+    urls=[
+       debug:"http://www.baidu.com",
+       release:"http://jd.com"
+    ]
+}

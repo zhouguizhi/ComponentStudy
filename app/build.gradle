@@ -1,0 +1,35 @@
+apply plugin: 'com.android.application'
+def androidId = rootProject.ext.androidId
+android {
+    compileSdkVersion androidId.compileSdkVersion
+    buildToolsVersion androidId.buildToolsVersion
+
+    defaultConfig {
+        applicationId androidId.applicationId
+        minSdkVersion androidId.minSdkVersion
+        targetSdkVersion androidId.targetSdkVersion
+        versionCode androidId.versionCode
+        versionName androidId.versionName
+    }
+
+    buildTypes {
+        debug{
+            buildConfigField("String","debug","\"${rootProject.ext.urls.debug}\"")
+        }
+        release {
+            buildConfigField("String","release","\"${rootProject.ext.urls.release}\"")
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+def supportLib = rootProject.ext.dependencies
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    testImplementation 'junit:junit:4.12'
+    implementation supportLib.appcompat
+//    implementation supportLib.constraintLayoutVersion
+    //这是简写
+//    supportLib.each{k,v->implementation v}
+}
